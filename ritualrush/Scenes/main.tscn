@@ -563,5 +563,5 @@ tile_set = SubResource("TileSet_a3ewc")
 position = Vector2(11, 63)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deatharea"]
-position = Vector2(52, 1)
+position = Vector2(52, 70)
 shape = SubResource("WorldBoundaryShape2D_j6g0i")

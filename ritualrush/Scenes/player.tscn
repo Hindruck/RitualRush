@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dbtngpjjtq15q"]
+[gd_scene load_steps=57 format=3 uid="uid://dbtngpjjtq15q"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5d6pe"]
 [ext_resource type="Texture2D" uid="uid://cwm6bd7qe5xoj" path="res://Assets/Characters/Wizard/Attack1.png" id="1_q7rex"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4cvo5vwx018y" path="res://Assets/Characters/Wizard/Death.png" id="3_sm4x8"]
 [ext_resource type="Texture2D" uid="uid://c7yn7j2d366dg" path="res://Assets/Characters/Wizard/Hit.png" id="4_v13p7"]
 [ext_resource type="Texture2D" uid="uid://cwswl8ill2nr4" path="res://Assets/Characters/Wizard/Idle.png" id="5_br462"]
+[ext_resource type="Texture2D" uid="uid://dltiwmr4t7wrb" path="res://Assets/Characters/Wizard/Fall.png" id="5_loyea"]
 [ext_resource type="Texture2D" uid="uid://d17smm7mbo7jd" path="res://Assets/Characters/Wizard/Jump.png" id="6_miyla"]
 [ext_resource type="Texture2D" uid="uid://whjnq6apbpay" path="res://Assets/Characters/Wizard/Run.png" id="7_x3eqt"]
 
@@ -100,6 +101,14 @@ region = Rect2(1155, 0, 231, 190)
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7d7d"]
 atlas = ExtResource("3_sm4x8")
 region = Rect2(1386, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wldk"]
+atlas = ExtResource("5_loyea")
+region = Rect2(0, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo3vs"]
+atlas = ExtResource("5_loyea")
+region = Rect2(231, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1g30"]
 atlas = ExtResource("4_v13p7")
@@ -208,7 +217,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g7jce")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
 "speed": 5.0
 }, {
@@ -237,7 +246,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ac10")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
 "speed": 5.0
 }, {
@@ -265,6 +274,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wldk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo3vs")
+}],
+"loop": true,
+"name": &"fall",
 "speed": 5.0
 }, {
 "frames": [{
@@ -357,10 +377,11 @@ script = ExtResource("1_5d6pe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.5, -10)
 sprite_frames = SubResource("SpriteFrames_4mshj")
-animation = &"idle"
+animation = &"attack_1"
 autoplay = "idle"
-frame_progress = 0.280154
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_dop77")
+
+[connection signal="input_event" from="." to="." method="_on_input_event_attack_1"]
