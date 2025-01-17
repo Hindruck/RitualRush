@@ -4,7 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var HP: int = 250
-var isPlayingAnimation: bool = false 
+var isPlayingAnimation: bool = false
+var direction 
 
 @onready var animated_sprite_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
@@ -24,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("move_left", "move_right")
+	direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -57,7 +58,9 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack_1"):
-		var FireBall: Spell_Fireball = new Spell_FireBall
+		animated_sprite_player.stop()
+		animated_sprite_player.play("attack_1")
+		castFireBall()
 		
 	
 func takeDamage(damage: int) -> void:
@@ -68,6 +71,11 @@ func takeDamage(damage: int) -> void:
 			animated_sprite_player.play("death")
 			timer.start()
 
+func castFireBall():
+	var FireBall = load("res://Scenes/Spell_Fireball.tscn")
+	var cast = FireBall.instanciate(110, direction)
+	add_sibling(get_tree().get_root().get_node("main"),cast)
+	
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1

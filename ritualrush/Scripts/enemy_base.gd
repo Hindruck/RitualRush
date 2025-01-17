@@ -32,5 +32,5 @@ func _physics_process(delta: float) -> void:
 func takeDamage(damage: int) -> void:
 		HP -= damage
 		
-func heal(healtPoints: int) -> void:
+func heal(healthPoints: int) -> void:
 		HP += healthPoints		
