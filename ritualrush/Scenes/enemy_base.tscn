@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://doewxbh8ukian"]
+
+[ext_resource type="PackedScene" uid="uid://b6xg1643afmca" path="res://Scenes/deatharea.tscn" id="1_vl3sp"]
+
+[node name="EnemyBase" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="RayCastLeft" type="RayCast2D" parent="AnimatedSprite2D"]
+
+[node name="RayCastRight" type="RayCast2D" parent="AnimatedSprite2D"]
+
+[node name="Deatharea" parent="." instance=ExtResource("1_vl3sp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deatharea"]
