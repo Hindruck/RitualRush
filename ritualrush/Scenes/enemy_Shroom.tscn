@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://db0fvvp5ttt4m"]
+[gd_scene load_steps=39 format=3 uid="uid://db0fvvp5ttt4m"]
 
 [ext_resource type="PackedScene" uid="uid://doewxbh8ukian" path="res://Scenes/enemy_base.tscn" id="1_vrc8y"]
 [ext_resource type="Texture2D" uid="uid://dss4lnjjohn5v" path="res://Assets/Characters/Mushroom/Attack.png" id="2_0hkce"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2edm2lxnc02y" path="res://Assets/Characters/Mushroom/Death.png" id="3_0xucb"]
 [ext_resource type="Texture2D" uid="uid://dt05m675xjvfs" path="res://Assets/Characters/Mushroom/Take Hit.png" id="4_ud8xu"]
 [ext_resource type="Texture2D" uid="uid://cox40ein3ip1t" path="res://Assets/Characters/Mushroom/Run.png" id="6_nm3iv"]
+[ext_resource type="Script" path="res://Scripts/Shroom.gd" id="7_uw08u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31ixw"]
 atlas = ExtResource("2_0hkce")
@@ -234,6 +235,10 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gf1f"]
 height = 36.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp71p"]
+radius = 11.0
+height = 44.0
+
 [node name="EnemyBase" instance=ExtResource("1_vrc8y")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
@@ -246,3 +251,15 @@ frame_progress = 0.717722
 [node name="CollisionShape2D" parent="Deatharea" index="1"]
 position = Vector2(1, -17)
 shape = SubResource("CapsuleShape2D_7gf1f")
+
+[node name="Shroom" type="Node2D" parent="." index="2"]
+script = ExtResource("7_uw08u")
+
+[node name="Area2D" type="Area2D" parent="Shroom" index="0"]
+
+[node name="SporeCollision" type="CollisionShape2D" parent="Shroom/Area2D" index="0"]
+position = Vector2(1, -38)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rp71p")
+
+[connection signal="body_entered" from="Shroom/Area2D" to="Shroom" method="_on_area_2d_body_entered"]

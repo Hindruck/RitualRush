@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8jlvjl855tmo"]
+
+[ext_resource type="Script" path="res://Scripts/SpellBase.gd" id="1_vb6x2"]
+[ext_resource type="PackedScene" uid="uid://chhpcgml6wr5j" path="res://Scenes/damagearea.tscn" id="2_ohhaj"]
+
+[node name="Spell_Base" type="Node2D"]
+script = ExtResource("1_vb6x2")
+
+[node name="DamageArea" parent="." instance=ExtResource("2_ohhaj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

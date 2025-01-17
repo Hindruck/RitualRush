@@ -384,4 +384,7 @@ autoplay = "idle"
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_dop77")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event_attack_1"]

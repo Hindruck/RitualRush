@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://doewxbh8ukian"]
+[gd_scene load_steps=3 format=3 uid="uid://doewxbh8ukian"]
 
+[ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_7rufx"]
 [ext_resource type="PackedScene" uid="uid://b6xg1643afmca" path="res://Scenes/deatharea.tscn" id="1_vl3sp"]
 
 [node name="EnemyBase" type="Node2D"]
+script = ExtResource("1_7rufx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
 [node name="RayCastLeft" type="RayCast2D" parent="AnimatedSprite2D"]
+collision_mask = 18
+collide_with_areas = true
 
 [node name="RayCastRight" type="RayCast2D" parent="AnimatedSprite2D"]
+collision_mask = 18
+collide_with_areas = true
 
 [node name="Deatharea" parent="." instance=ExtResource("1_vl3sp")]
 

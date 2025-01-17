@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://bedemcpxo6cph"]
+
+[ext_resource type="Script" path="res://Scripts/SpellBase.gd" id="1_h03qf"]
+[ext_resource type="PackedScene" uid="uid://chhpcgml6wr5j" path="res://Scenes/damagearea.tscn" id="2_bu21e"]
+[ext_resource type="Texture2D" uid="uid://cy6swt2rf6e5y" path="res://Assets/VFX/Part 8/397.png" id="3_22nog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m58pt"]
+size = Vector2(12, 77.7032)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aool2"]
+atlas = ExtResource("3_22nog")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmp8v"]
+atlas = ExtResource("3_22nog")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rptqv"]
+atlas = ExtResource("3_22nog")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2lu"]
+atlas = ExtResource("3_22nog")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsfjr"]
+atlas = ExtResource("3_22nog")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn776"]
+atlas = ExtResource("3_22nog")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6orx"]
+atlas = ExtResource("3_22nog")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8xuo"]
+atlas = ExtResource("3_22nog")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xxc6"]
+atlas = ExtResource("3_22nog")
+region = Rect2(512, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7ary"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aool2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmp8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rptqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsfjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn776")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6orx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8xuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xxc6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Spell_Base" type="Node2D"]
+script = ExtResource("1_h03qf")
+
+[node name="DamageArea" parent="." instance=ExtResource("2_bu21e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(2.82112, 0.213575)
+rotation = 0.719411
+shape = SubResource("RectangleShape2D_m58pt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l7ary")
+frame_progress = 0.297726
+
+[node name="Timer" type="Timer" parent="."]
