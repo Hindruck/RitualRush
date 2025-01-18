@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var damage: int = 10
+var player: Player
 
 func _on_body_entered(body: Node2D) -> void:
-	Engine.time_scale = 0.5
-	var player: CharacterBody2D = body
+	player = body
 	player.takeDamage(damage)

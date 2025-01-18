@@ -147,7 +147,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t6i01")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 7.0
 }, {
@@ -164,7 +164,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ksdfj")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 3.0
 }, {
@@ -181,7 +181,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ctb5r")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hit",
 "speed": 5.0
 }, {
@@ -244,9 +244,8 @@ height = 44.0
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_8gxy6")
-animation = &"Attack"
+animation = &"Hit"
 autoplay = "Idle"
-frame_progress = 0.717722
 
 [node name="CollisionShape2D" parent="Deatharea" index="1"]
 position = Vector2(1, -17)

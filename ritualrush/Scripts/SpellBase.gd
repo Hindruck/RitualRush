@@ -1,11 +1,11 @@
 extends Node2D
-
+class_name Spell
 
 @onready var damage_area: Area2D = $DamageArea
 @onready var timer: Timer = $Timer
 
 
-func _init(damage: int, direction: float):
+func spawn(damage: int, direction: float):
 	position.x = 150 * direction
 	damage_area.damage = damage
 	timer.start

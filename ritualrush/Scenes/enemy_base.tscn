@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://doewxbh8ukian"]
+[gd_scene load_steps=4 format=3 uid="uid://doewxbh8ukian"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_base.gd" id="1_7rufx"]
 [ext_resource type="PackedScene" uid="uid://b6xg1643afmca" path="res://Scenes/deatharea.tscn" id="1_vl3sp"]
+[ext_resource type="Script" path="res://Scripts/damagearea.gd" id="3_q4rdm"]
 
 [node name="EnemyBase" type="Node2D"]
 script = ExtResource("1_7rufx")
@@ -17,5 +18,7 @@ collision_mask = 18
 collide_with_areas = true
 
 [node name="Deatharea" parent="." instance=ExtResource("1_vl3sp")]
+script = ExtResource("3_q4rdm")
+damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deatharea"]

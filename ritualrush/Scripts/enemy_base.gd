@@ -1,9 +1,10 @@
 extends Node2D
+class_name Enemy
 
 var direction = 1
 
 @export var MOVESPEED = 100
-@export var HP: int = 100
+@export var HP: float = 100
 
 @onready var ray_cast_left: RayCast2D = $AnimatedSprite2D/RayCastLeft
 @onready var ray_cast_right: RayCast2D = $AnimatedSprite2D/RayCastRight
@@ -23,9 +24,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 		if direction == 0:
-			animated_sprite_player.play("idle")
+			animated_sprite_player.play("Idle")
 		else:
-			animated_sprite_player.play("run")	
+			animated_sprite_player.play("Run")	
 		
 	
 

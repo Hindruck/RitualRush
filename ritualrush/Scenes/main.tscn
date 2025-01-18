@@ -565,8 +565,9 @@ collision_mask = 16
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 0)
 zoom = Vector2(1.5, 1.5)
-limit_top = -400
+limit_top = -1000
 limit_bottom = 120
+limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Deatharea" parent="." instance=ExtResource("4_i17cf")]

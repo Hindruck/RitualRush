@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dbtngpjjtq15q"]
+[gd_scene load_steps=58 format=3 uid="uid://dbtngpjjtq15q"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5d6pe"]
 [ext_resource type="Texture2D" uid="uid://cwm6bd7qe5xoj" path="res://Assets/Characters/Wizard/Attack1.png" id="1_q7rex"]
@@ -218,7 +218,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_g7jce")
 }],
 "loop": false,
-"name": &"attack_1",
+"name": &"Attack_1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -247,7 +247,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5ac10")
 }],
 "loop": false,
-"name": &"attack_2",
+"name": &"Attack_2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -272,8 +272,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p7d7d")
 }],
-"loop": true,
-"name": &"death",
+"loop": false,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -284,7 +284,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lo3vs")
 }],
 "loop": true,
-"name": &"fall",
+"name": &"Fall",
 "speed": 5.0
 }, {
 "frames": [{
@@ -300,8 +300,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pjo81")
 }],
-"loop": true,
-"name": &"hit",
+"loop": false,
+"name": &"Hit",
 "speed": 5.0
 }, {
 "frames": [{
@@ -324,7 +324,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r5ibq")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 8.0
 }, {
 "frames": [{
@@ -335,7 +335,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vyuwl")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"Jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -364,12 +364,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_dlnuk")
 }],
 "loop": true,
-"name": &"run",
+"name": &"Run",
 "speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dop77"]
 size = Vector2(25, 74)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gri8v"]
+bg_color = Color(0.035292, 0.511552, 0.283771, 1)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_5d6pe")
@@ -377,8 +380,7 @@ script = ExtResource("1_5d6pe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.5, -10)
 sprite_frames = SubResource("SpriteFrames_4mshj")
-animation = &"attack_2"
-autoplay = "idle"
+animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -387,4 +389,20 @@ shape = SubResource("RectangleShape2D_dop77")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Node" type="Node" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 59.0
+offset_bottom = -33.0
+scale = Vector2(1, -0.56)
+theme_override_styles/fill = SubResource("StyleBoxFlat_gri8v")
+max_value = 250.0
+step = 1.0
+show_percentage = false
+
 [connection signal="input_event" from="." to="." method="_on_input_event_attack_1"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

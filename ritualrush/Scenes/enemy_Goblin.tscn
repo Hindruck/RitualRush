@@ -146,7 +146,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k8uqa")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 9.0
 }, {
@@ -163,7 +163,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jthp6")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 7.0
 }, {
@@ -180,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_se2j0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hit",
 "speed": 7.0
 }, {
@@ -239,9 +239,8 @@ radius = 8.0
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_26pws")
-animation = &"Death"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.933588
 
 [node name="RayCastLeft" parent="AnimatedSprite2D" index="0"]
 target_position = Vector2(-50, 0)

@@ -1,4 +1,4 @@
-extends Node2D
+extends Enemy
 
 @onready var spore_collision: CollisionShape2D = $Area2D/SporeCollision
 
