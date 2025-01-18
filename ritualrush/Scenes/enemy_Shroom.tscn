@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://db0fvvp5ttt4m"]
+[gd_scene load_steps=40 format=3 uid="uid://db0fvvp5ttt4m"]
 
 [ext_resource type="PackedScene" uid="uid://doewxbh8ukian" path="res://Scenes/enemy_base.tscn" id="1_vrc8y"]
 [ext_resource type="Texture2D" uid="uid://dss4lnjjohn5v" path="res://Assets/Characters/Mushroom/Attack.png" id="2_0hkce"]
@@ -232,12 +232,17 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gf1f"]
-height = 36.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cac5q"]
+radius = 9.0
+height = 40.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp71p"]
 radius = 11.0
 height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i70jw"]
+radius = 15.0
+height = 48.0
 
 [node name="EnemyBase" instance=ExtResource("1_vrc8y")]
 
@@ -247,9 +252,13 @@ sprite_frames = SubResource("SpriteFrames_8gxy6")
 animation = &"Hit"
 autoplay = "Idle"
 
-[node name="CollisionShape2D" parent="Deatharea" index="1"]
-position = Vector2(1, -17)
-shape = SubResource("CapsuleShape2D_7gf1f")
+[node name="DamageArea" parent="." index="1"]
+damage = 100
+
+[node name="DamageCollision" parent="DamageArea" index="1"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_cac5q")
+debug_color = Color(0.994551, 0, 0.220241, 0.42)
 
 [node name="Shroom" type="Node2D" parent="." index="2"]
 script = ExtResource("7_uw08u")
@@ -260,5 +269,11 @@ script = ExtResource("7_uw08u")
 position = Vector2(1, -38)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rp71p")
+debug_color = Color(0.838179, 0.122111, 0.880316, 0.42)
+
+[node name="HurtCollision" parent="HurtArea" index="0"]
+position = Vector2(0, -22)
+shape = SubResource("CapsuleShape2D_i70jw")
+debug_color = Color(0, 0.650247, 0.104184, 0.42)
 
 [connection signal="body_entered" from="Shroom/Area2D" to="Shroom" method="_on_area_2d_body_entered"]

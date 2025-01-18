@@ -1,14 +1,19 @@
-[gd_scene load_steps=58 format=3 uid="uid://dbtngpjjtq15q"]
+[gd_scene load_steps=61 format=3 uid="uid://dbtngpjjtq15q"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_5d6pe"]
 [ext_resource type="Texture2D" uid="uid://cwm6bd7qe5xoj" path="res://Assets/Characters/Wizard/Attack1.png" id="1_q7rex"]
 [ext_resource type="Texture2D" uid="uid://cf6lfa8sv5evw" path="res://Assets/Characters/Wizard/Attack2.png" id="2_805e6"]
 [ext_resource type="Texture2D" uid="uid://c4cvo5vwx018y" path="res://Assets/Characters/Wizard/Death.png" id="3_sm4x8"]
+[ext_resource type="Script" path="res://Scenes/AttackArea.gd" id="3_xkfto"]
 [ext_resource type="Texture2D" uid="uid://c7yn7j2d366dg" path="res://Assets/Characters/Wizard/Hit.png" id="4_v13p7"]
 [ext_resource type="Texture2D" uid="uid://cwswl8ill2nr4" path="res://Assets/Characters/Wizard/Idle.png" id="5_br462"]
 [ext_resource type="Texture2D" uid="uid://dltiwmr4t7wrb" path="res://Assets/Characters/Wizard/Fall.png" id="5_loyea"]
 [ext_resource type="Texture2D" uid="uid://d17smm7mbo7jd" path="res://Assets/Characters/Wizard/Jump.png" id="6_miyla"]
 [ext_resource type="Texture2D" uid="uid://whjnq6apbpay" path="res://Assets/Characters/Wizard/Run.png" id="7_x3eqt"]
+[ext_resource type="PackedScene" uid="uid://chhpcgml6wr5j" path="res://Scenes/damagearea.tscn" id="10_ixfcn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47p6n"]
+size = Vector2(55.75, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6l7j"]
 atlas = ExtResource("1_q7rex")
@@ -248,7 +253,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_2",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -375,12 +380,27 @@ size = Vector2(25, 74)
 bg_color = Color(0.035292, 0.511552, 0.283771, 1)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_5d6pe")
+
+[node name="AttackArea" parent="." instance=ExtResource("10_ixfcn")]
+collision_layer = 0
+collision_mask = 18
+script = ExtResource("3_xkfto")
+damage = 150
+
+[node name="attack_2_area" type="CollisionShape2D" parent="AttackArea"]
+light_mask = 262145
+position = Vector2(81, -23)
+shape = SubResource("RectangleShape2D_47p6n")
+disabled = true
+debug_color = Color(0.282519, 0.499322, 1, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.5, -10)
 sprite_frames = SubResource("SpriteFrames_4mshj")
-animation = &"Run"
+animation = &"Attack_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -404,5 +424,6 @@ step = 1.0
 show_percentage = false
 
 [connection signal="input_event" from="." to="." method="_on_input_event_attack_1"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_2_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

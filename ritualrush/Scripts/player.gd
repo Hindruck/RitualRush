@@ -9,6 +9,8 @@ var HP: float = 250.0
 var isPlayingAnimation: bool = false
 var direction 
 
+@onready var attack_area: AttackArea = $AttackArea
+@onready var attack_2_area: CollisionShape2D = $AttackArea/attack_2_area
 @onready var animated_sprite_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 @onready var healthbar: ProgressBar = $HealthBar
@@ -72,10 +74,10 @@ func _process(delta: float) -> void:
 		animated_sprite_player.play("Attack_1")
 		castFireBall()
 	elif Input.is_action_just_pressed("attack_2"):
-		animated_sprite_player.stop()
 		isPlayingAnimation = true
 		animated_sprite_player.play("Attack_2")
-		castFireBall()	
+		attack_2_area.set_disabled(false)
+		print(attack_2_area.is_disabled)
 		
 func castFireBall():
 	pass	
@@ -105,3 +107,10 @@ func _on_timer_timeout() -> void:
 
 func _on_animated_sprite_animation_finished() -> void:
 	isPlayingAnimation = false
+	attack_2_area.set_disabled(true)
+
+
+func _on_attack_2_area_entered(area: Area2D) -> void:
+	if area.is_class("HurtArea"):
+		if area.get_parent().has_method("takeDamage"):
+			area.get_parent().takeDamage(attack_area.damage);

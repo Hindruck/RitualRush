@@ -1,4 +1,5 @@
 extends Area2D
+class_name DamageArea
 
 @export var damage: int = 10
 var player: Player

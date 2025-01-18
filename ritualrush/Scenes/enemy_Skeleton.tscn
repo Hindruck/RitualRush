@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b486b1fpnxat1"]
+[gd_scene load_steps=34 format=3 uid="uid://b486b1fpnxat1"]
 
 [ext_resource type="PackedScene" uid="uid://doewxbh8ukian" path="res://Scenes/enemy_base.tscn" id="1_qldxl"]
 [ext_resource type="Texture2D" uid="uid://cjdcy4idyu23x" path="res://Assets/Characters/Skeleton/Death.png" id="2_s8meg"]
@@ -203,16 +203,19 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yis0p"]
-radius = 6.99999
-height = 35.9999
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdcto"]
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_deyrs"]
+radius = 15.0
+height = 66.0
 
 [node name="EnemyBase" instance=ExtResource("1_qldxl")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_od44x")
-animation = &"Run"
+animation = &"Hit"
 autoplay = "Idle"
 
 [node name="RayCastLeft" parent="AnimatedSprite2D" index="0"]
@@ -221,10 +224,15 @@ target_position = Vector2(-50, 0)
 [node name="RayCastRight" parent="AnimatedSprite2D" index="1"]
 target_position = Vector2(50, 0)
 
-[node name="Deatharea" parent="." index="1"]
-damage = 100
+[node name="DamageArea" parent="." index="1"]
+damage = 85
 
-[node name="CollisionShape2D" parent="Deatharea" index="1"]
-position = Vector2(4, -27)
-rotation = 0.00187385
-shape = SubResource("CapsuleShape2D_yis0p")
+[node name="DamageCollision" parent="DamageArea" index="1"]
+position = Vector2(6, -26)
+shape = SubResource("CapsuleShape2D_hdcto")
+debug_color = Color(0.994709, 0.0658376, 0, 0.42)
+
+[node name="HurtCollision" parent="HurtArea" index="0"]
+position = Vector2(5, -27)
+shape = SubResource("CapsuleShape2D_deyrs")
+debug_color = Color(0, 0.64985, 0.125096, 0.42)

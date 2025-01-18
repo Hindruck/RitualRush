@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bjqhlvrvb5txj"]
+[gd_scene load_steps=38 format=3 uid="uid://bjqhlvrvb5txj"]
 
 [ext_resource type="PackedScene" uid="uid://doewxbh8ukian" path="res://Scenes/enemy_base.tscn" id="1_5woxq"]
 [ext_resource type="Texture2D" uid="uid://bchc437bf30w5" path="res://Assets/Characters/Goblin/Attack.png" id="2_ii6qn"]
@@ -231,8 +231,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka6pt"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_peqif"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sdwgu"]
+radius = 14.0
+height = 42.0
 
 [node name="EnemyBase" instance=ExtResource("1_5woxq")]
 
@@ -248,6 +251,15 @@ target_position = Vector2(-50, 0)
 [node name="RayCastRight" parent="AnimatedSprite2D" index="1"]
 target_position = Vector2(50, 0)
 
-[node name="CollisionShape2D" parent="Deatharea" index="1"]
-position = Vector2(2, -18)
-shape = SubResource("CapsuleShape2D_ka6pt")
+[node name="DamageArea" parent="." index="1"]
+damage = 60
+
+[node name="DamageCollision" parent="DamageArea" index="1"]
+position = Vector2(1, -16)
+shape = SubResource("CapsuleShape2D_peqif")
+debug_color = Color(0.986972, 0.0764501, 0.208058, 0.42)
+
+[node name="HurtCollision" parent="HurtArea" index="0"]
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_sdwgu")
+debug_color = Color(2.96004e-06, 0.647767, 0.201648, 0.42)

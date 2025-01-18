@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://crekacsnnnanh"]
+[gd_scene load_steps=41 format=3 uid="uid://crekacsnnnanh"]
 
 [ext_resource type="PackedScene" uid="uid://doewxbh8ukian" path="res://Scenes/enemy_base.tscn" id="1_pvdum"]
 [ext_resource type="Texture2D" uid="uid://61nocvx3faw6" path="res://Assets/Characters/Flying eye/Attack.png" id="2_ndiw6"]
@@ -258,8 +258,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rpk73"]
-radius = 8.06226
+[sub_resource type="CircleShape2D" id="CircleShape2D_opryh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ds5li"]
+radius = 14.0
 
 [node name="EnemyBase" instance=ExtResource("1_pvdum")]
 
@@ -275,9 +277,15 @@ target_position = Vector2(-50, 0)
 [node name="RayCastRight" parent="AnimatedSprite2D" index="1"]
 target_position = Vector2(50, 0)
 
-[node name="Deatharea" parent="." index="1"]
-damage = 60
+[node name="DamageArea" parent="." index="1"]
+damage = 120
 
-[node name="CollisionShape2D" parent="Deatharea" index="1"]
-position = Vector2(1, -14)
-shape = SubResource("CircleShape2D_rpk73")
+[node name="DamageCollision" parent="DamageArea" index="1"]
+position = Vector2(1, -13)
+shape = SubResource("CircleShape2D_opryh")
+debug_color = Color(1, 0.00701308, 0.0515146, 0.42)
+
+[node name="HurtCollision" parent="HurtArea" index="0"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_ds5li")
+debug_color = Color(0, 0.649897, 0.122777, 0.42)
