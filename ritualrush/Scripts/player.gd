@@ -9,6 +9,7 @@ var HP: float = 250.0
 var isPlayingAnimation: bool = false
 var direction 
 
+@onready var fireball: Spell = $Fireball
 @onready var attack_area: AttackArea = $AttackArea
 @onready var attack_2_area: CollisionShape2D = $AttackArea/attack_2_area
 @onready var animated_sprite_player: AnimatedSprite2D = $AnimatedSprite2D
@@ -41,8 +42,10 @@ func _physics_process(delta: float) -> void:
 	# Flip to face the direction of the movement
 	if direction > 0:
 		animated_sprite_player.flip_h = false
+		attack_2_area.position.x = 70
 	elif direction < 0:
 		animated_sprite_player.flip_h = true
+		attack_2_area.position.x = -70
 	
 	# Only updating the movement Animations when no other animation is played
 	if !isPlayingAnimation:
@@ -76,12 +79,19 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("attack_2"):
 		isPlayingAnimation = true
 		animated_sprite_player.play("Attack_2")
-		attack_2_area.set_disabled(false)
-		print(attack_2_area.is_disabled)
-		
+		castMelee()
+				
 func castFireBall():
-	pass	
+	fireball.spawn(direction)
 	
+
+func castMelee():
+	var overlapping_Enemies = attack_area.get_overlapping_areas()
+	
+	for area in overlapping_Enemies:
+		var parent = area.get_parent()
+		parent.takeDamage(attack_area.damage)	
+		
 func takeDamage(damage: int) -> void:
 	HP -= damage
 	isPlayingAnimation = true
@@ -107,10 +117,3 @@ func _on_timer_timeout() -> void:
 
 func _on_animated_sprite_animation_finished() -> void:
 	isPlayingAnimation = false
-	attack_2_area.set_disabled(true)
-
-
-func _on_attack_2_area_entered(area: Area2D) -> void:
-	if area.is_class("HurtArea"):
-		if area.get_parent().has_method("takeDamage"):
-			area.get_parent().takeDamage(attack_area.damage);

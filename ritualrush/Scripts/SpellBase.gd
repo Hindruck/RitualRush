@@ -1,19 +1,36 @@
 extends Node2D
 class_name Spell
 
-@onready var damage_area: Area2D = $DamageArea
+@onready var hit_timer: Timer = $HitTimer
 @onready var timer: Timer = $Timer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $AttackArea/CollisionShape2D
+@onready var attack_area: AttackArea = $AttackArea
 
 
-func spawn(damage: int, direction: float):
-	position.x = 150 * direction
-	damage_area.damage = damage
-	timer.start
-	
+
+func spawn(direction: float):
+	self.visible = true
+	animated_sprite.play("default")
+	if direction >= 0:
+		position.x = 200
+	elif direction < 0:
+		position.x = -200	
+	timer.start()	
+	hit_timer.start()
+		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	animated_sprite.stop()
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	self.visible = false
+
+
+func _on_hit_timer_timeout() -> void:
+	var hit_enemies = attack_area.get_overlapping_areas()
+	
+	for area in hit_enemies:
+		var parent = area.get_parent()
+		parent.takeDamage(attack_area.damage)
