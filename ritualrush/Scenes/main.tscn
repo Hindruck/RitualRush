@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d0nvdgr3v3i0w"]
+[gd_scene load_steps=25 format=4 uid="uid://d0nvdgr3v3i0w"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6advc"]
 [ext_resource type="PackedScene" uid="uid://dbtngpjjtq15q" path="res://Scenes/player.tscn" id="1_gci2x"]
@@ -994,6 +994,11 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_7cyoq")
 sources/1 = SubResource("TileSetAtlasSource_x84wf")
 
+[sub_resource type="LabelSettings" id="LabelSettings_wdr52"]
+font_color = Color(0.854333, 0.62, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_v2otx"]
 font_color = Color(0.69, 0.38, 1, 1)
 
@@ -1138,6 +1143,18 @@ scale = Vector2(1, 1)
 [node name="Souls10" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
 position = Vector2(1524, -111)
 scale = Vector2(1, 1)
+
+[node name="Label" type="Label" parent="Levels/Level1"]
+offset_left = 2.0
+offset_top = -296.0
+offset_right = 286.0
+offset_bottom = -169.0
+text = "Press \"K\" for Ranged Fireball Attack
+Press \"L\" for Short Range Magicburst
+
+\"Space\" - Jump
+\"A/D\" \"Left/Right\" - Move"
+label_settings = SubResource("LabelSettings_wdr52")
 
 [node name="Level2" type="Node2D" parent="Levels"]
 position = Vector2(5534, -68)
