@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d0nvdgr3v3i0w"]
+[gd_scene load_steps=24 format=4 uid="uid://d0nvdgr3v3i0w"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6advc"]
 [ext_resource type="PackedScene" uid="uid://dbtngpjjtq15q" path="res://Scenes/player.tscn" id="1_gci2x"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b7mj7auw6vyks" path="res://Scenes/teleporter.tscn" id="6_h3wdg"]
 [ext_resource type="PackedScene" uid="uid://crekacsnnnanh" path="res://Scenes/enemy_Eye.tscn" id="6_uaecx"]
 [ext_resource type="PackedScene" uid="uid://bjqhlvrvb5txj" path="res://Scenes/enemy_Goblin.tscn" id="8_klry3"]
+[ext_resource type="PackedScene" uid="uid://dliup2yi3v5in" path="res://Scenes/souls.tscn" id="8_rwr6k"]
+[ext_resource type="Texture2D" uid="uid://u1y6fawppbxx" path="res://Assets/VFX/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)7.png" id="10_tjdts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ctrn3"]
 texture = ExtResource("3_5ptpo")
@@ -992,6 +994,20 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_7cyoq")
 sources/1 = SubResource("TileSetAtlasSource_x84wf")
 
+[sub_resource type="LabelSettings" id="LabelSettings_v2otx"]
+font_color = Color(0.69, 0.38, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1n7ow"]
+font_size = 40
+font_color = Color(0.690196, 0.380392, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8ggk"]
+size = Vector2(61, 75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jmdio"]
+font_size = 23
+font_color = Color(0.77, 0.2695, 0.694925, 1)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j6g0i"]
 
 [node name="Main" type="Node2D"]
@@ -1080,6 +1096,48 @@ disable_mode = 2
 
 [node name="TeleportLocation" parent="Levels/Level1/Teleporter" index="2"]
 position = Vector2(2996, 30)
+
+[node name="Collectables" type="Node2D" parent="Levels/Level1"]
+
+[node name="Souls" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(298, -95)
+scale = Vector2(1, 1)
+
+[node name="Souls2" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(420, -143)
+scale = Vector2(1, 1)
+
+[node name="Souls3" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(811, -112)
+scale = Vector2(1, 1)
+
+[node name="Souls4" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(598, -33)
+scale = Vector2(1, 1)
+
+[node name="Souls5" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1272, -48)
+scale = Vector2(1, 1)
+
+[node name="Souls6" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1661, -304)
+scale = Vector2(1, 1)
+
+[node name="Souls7" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(2100, -272)
+scale = Vector2(1, 1)
+
+[node name="Souls8" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1962, -112)
+scale = Vector2(1, 1)
+
+[node name="Souls9" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1381, -256)
+scale = Vector2(1, 1)
+
+[node name="Souls10" parent="Levels/Level1/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1524, -111)
+scale = Vector2(1, 1)
 
 [node name="Level2" type="Node2D" parent="Levels"]
 position = Vector2(5534, -68)
@@ -1222,6 +1280,49 @@ scale = Vector2(1.85, 3.7)
 [node name="TeleportLocation" parent="Levels/Level2/Teleporter" index="2"]
 position = Vector2(332, -1424)
 
+[node name="Collectables" type="Node2D" parent="Levels/Level2"]
+
+[node name="Souls" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(139, -58)
+scale = Vector2(1, 1)
+
+[node name="Souls2" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(231, 51)
+scale = Vector2(1, 1)
+
+[node name="Souls3" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(570, 69)
+scale = Vector2(1, 1)
+
+[node name="Souls4" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(855, 5)
+scale = Vector2(1, 1)
+
+[node name="Souls5" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1195, 116)
+scale = Vector2(1, 1)
+
+[node name="Souls6" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1206, -157)
+scale = Vector2(1, 1)
+
+[node name="Souls7" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(2239, 131)
+scale = Vector2(1, 1)
+
+[node name="Souls8" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1780, 87)
+scale = Vector2(1, 1)
+
+[node name="Souls9" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1835, -140)
+scale = Vector2(1, 1)
+
+[node name="Souls10" parent="Levels/Level2/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1813, -29)
+rotation = 4.70341
+scale = Vector2(1, 1)
+
 [node name="Level3" type="Node2D" parent="Levels"]
 position = Vector2(6920, -1178)
 script = ExtResource("1_w6n4n")
@@ -1258,6 +1359,9 @@ position = Vector2(384, -71)
 [node name="Skeleton_5" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
 position = Vector2(440, -71)
 
+[node name="Skeleton_11" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
+position = Vector2(563, -77)
+
 [node name="Skeleton_6" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
 position = Vector2(1071, -71)
 
@@ -1273,13 +1377,32 @@ position = Vector2(1268, -71)
 [node name="Skeleton_10" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
 position = Vector2(1325, -71)
 
+[node name="Skeleton_12" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
+position = Vector2(1826, -70)
+
+[node name="Skeleton_13" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
+position = Vector2(1683, -73)
+
+[node name="Skeleton_14" parent="Levels/Level3/Enemies" instance=ExtResource("5_oaic1")]
+position = Vector2(2279, -71)
+
 [node name="Goblin_1" parent="Levels/Level3/Enemies" instance=ExtResource("8_klry3")]
-position = Vector2(1868, -71)
+position = Vector2(2049, -77)
+MOVESPEED = 175
+HP = 80.0
+
+[node name="Goblin_4" parent="Levels/Level3/Enemies" instance=ExtResource("8_klry3")]
+position = Vector2(1409, -71)
+MOVESPEED = 175
+HP = 80.0
+
+[node name="Goblin_5" parent="Levels/Level3/Enemies" instance=ExtResource("8_klry3")]
+position = Vector2(1494, -71)
 MOVESPEED = 175
 HP = 80.0
 
 [node name="Goblin_2" parent="Levels/Level3/Enemies" instance=ExtResource("8_klry3")]
-position = Vector2(1906, -71)
+position = Vector2(2218, -69)
 MOVESPEED = 175
 HP = 80.0
 
@@ -1300,6 +1423,119 @@ position = Vector2(1468, -248)
 [node name="Eye_4" parent="Levels/Level3/Enemies" instance=ExtResource("6_uaecx")]
 position = Vector2(1830, -295)
 
+[node name="Collectables" type="Node2D" parent="Levels/Level3"]
+
+[node name="Souls" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(150, -174)
+scale = Vector2(1, 1)
+
+[node name="Souls2" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(103, 29)
+rotation = 1.57588
+scale = Vector2(1, 1)
+
+[node name="Souls3" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(565, 19)
+scale = Vector2(1, 1)
+
+[node name="Souls4" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(953, 50)
+scale = Vector2(1, 1)
+
+[node name="Souls5" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1264, -95)
+scale = Vector2(1, 1)
+
+[node name="Souls6" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1624, -139)
+scale = Vector2(1, 1)
+
+[node name="Souls7" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(1707, 51)
+scale = Vector2(1, 1)
+
+[node name="Souls8" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(2325, 31)
+rotation = -1.57103
+scale = Vector2(1, 1)
+
+[node name="Souls9" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(2152, -112)
+scale = Vector2(1, 1)
+
+[node name="Souls10" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
+position = Vector2(2186, -112)
+rotation = 6.27854
+scale = Vector2(1, 1)
+
+[node name="Teleporter" parent="Levels/Level3" instance=ExtResource("6_h3wdg")]
+position = Vector2(2343, -112)
+disable_mode = 2
+
+[node name="CollisionShape2D" parent="Levels/Level3/Teleporter" index="0"]
+position = Vector2(-5, -5)
+scale = Vector2(1.85, 3.7)
+
+[node name="TeleportLocation" parent="Levels/Level3/Teleporter" index="2"]
+position = Vector2(-270, 1009)
+
+[node name="Final Screen" type="Node2D" parent="Levels"]
+position = Vector2(8879, -213)
+
+[node name="TileMapLayerBackground" type="TileMapLayer" parent="Levels/Final Screen"]
+position = Vector2(3, 1)
+tile_map_data = PackedByteArray("AAAWAPr/AAALAAoAAAAWAPv/AAALAAoAAAAWAPz/AAALAAoAAAAWAP3/AAALAAoAAAAWAP7/AAALAAoAAAAXAPn/AAALAAoAAAAXAPr/AAALAAoAAAAXAPv/AAALAAoAAAAXAPz/AAALAAoAAAAXAP3/AAALAAoAAAAXAP7/AAALAAoAAAAYAPj/AAALAAoAAAAYAPn/AAALAAoAAAAYAPr/AAALAAoAAAAYAPv/AAALAAoAAAAYAPz/AAALAAoAAAAYAP3/AAALAAoAAAAYAP7/AAALAAoAAAAZAPf/AAALAAoAAAAZAPj/AAALAAoAAAAZAPn/AAALAAoAAAAZAPr/AAALAAoAAAAZAPv/AAALAAoAAAAZAPz/AAALAAoAAAAZAP3/AAALAAoAAAAZAP7/AAALAAoAAAA=")
+tile_set = SubResource("TileSet_a3ewc")
+collision_enabled = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Levels/Final Screen"]
+position = Vector2(3, 1)
+tile_map_data = PackedByteArray("AAADAP//AAAIAAQAAAADAAAAAAAIAAQAAAAEAP//AAAIAAQAAAAEAAAAAAAIAAQAAAAFAP//AAAIAAQAAAAFAAAAAAAIAAQAAAAGAP//AAAIAAQAAAAGAAAAAAAIAAQAAAAHAP//AAAIAAQAAAAHAAAAAAAIAAQAAAAIAP//AAAIAAQAAAAIAAAAAAAIAAQAAAAJAP//AAAIAAQAAAAJAAAAAAAIAAQAAAAKAP//AAAIAAQAAAAKAAAAAAAIAAQAAAALAP//AAAIAAQAAAALAAAAAAAIAAQAAAAMAP//AAAIAAQAAAAMAAAAAAAIAAQAAAANAP//AAAIAAQAAAANAAAAAAAIAAQAAAAOAP//AAAIAAQAAAAOAAAAAAAIAAQAAAAPAP//AAAIAAQAAAAPAAAAAAAIAAQAAAAQAP//AAAIAAQAAAAQAAAAAAAIAAQAAAARAP//AAAIAAQAAAARAAAAAAAIAAQAAAASAP//AAAIAAQAAAASAAAAAAAIAAQAAAATAP//AAAIAAQAAAATAAAAAAAIAAQAAAAUAP//AAAIAAQAAAAUAAAAAAAIAAQAAAAVAP//AAAIAAQAAAAVAAAAAAAIAAQAAAAWAP//AAAIAAQAAAAWAAAAAAAIAAQAAAAXAP//AAAIAAQAAAAXAAAAAAAIAAQAAAAYAP//AAAIAAQAAAAYAAAAAAAIAAQAAAAZAP//AAAIAAQAAAAZAAAAAAAIAAQAAAAaAP//AAAIAAQAAAAaAAAAAAAIAAQAAAAbAP//AAAIAAQAAAAbAAAAAAAIAAQAAAAaAO3/AAAIAAQAAAAaAO7/AAAIAAQAAAAaAO//AAAIAAQAAAAaAPD/AAAIAAQAAAAaAPH/AAAIAAQAAAAaAPL/AAAIAAQAAAAaAPP/AAAIAAQAAAAaAPT/AAAIAAQAAAAaAPX/AAAIAAQAAAAaAPb/AAAIAAQAAAAaAPf/AAAIAAQAAAAaAPj/AAAIAAQAAAAaAPn/AAAIAAQAAAAaAPr/AAAIAAQAAAAaAPv/AAAIAAQAAAAaAPz/AAAIAAQAAAAaAP3/AAAIAAQAAAAaAP7/AAAIAAQAAAAbAO3/AAAIAAQAAAAbAO7/AAAIAAQAAAAbAO//AAAIAAQAAAAbAPD/AAAIAAQAAAAbAPH/AAAIAAQAAAAbAPL/AAAIAAQAAAAbAPP/AAAIAAQAAAAbAPT/AAAIAAQAAAAbAPX/AAAIAAQAAAAbAPb/AAAIAAQAAAAbAPf/AAAIAAQAAAAbAPj/AAAIAAQAAAAbAPn/AAAIAAQAAAAbAPr/AAAIAAQAAAAbAPv/AAAIAAQAAAAbAPz/AAAIAAQAAAAbAP3/AAAIAAQAAAAbAP7/AAAIAAQAAAADAO3/AAAIAAQAAAADAO7/AAAIAAQAAAAEAO3/AAAIAAQAAAAEAO7/AAAIAAQAAAAFAO3/AAAIAAQAAAAFAO7/AAAIAAQAAAAGAO3/AAAIAAQAAAAGAO7/AAAIAAQAAAAHAO3/AAAIAAQAAAAHAO7/AAAIAAQAAAAIAO3/AAAIAAQAAAAIAO7/AAAIAAQAAAAJAO3/AAAIAAQAAAAJAO7/AAAIAAQAAAAKAO3/AAAIAAQAAAAKAO7/AAAIAAQAAAALAO3/AAAIAAQAAAALAO7/AAAIAAQAAAAMAO3/AAAIAAQAAAAMAO7/AAAIAAQAAAANAO3/AAAIAAQAAAANAO7/AAAIAAQAAAAOAO3/AAAIAAQAAAAOAO7/AAAIAAQAAAAPAO3/AAAIAAQAAAAPAO7/AAAIAAQAAAAQAO3/AAAIAAQAAAAQAO7/AAAIAAQAAAARAO3/AAAIAAQAAAARAO7/AAAIAAQAAAASAO3/AAAIAAQAAAASAO7/AAAIAAQAAAATAO3/AAAIAAQAAAATAO7/AAAIAAQAAAAUAO3/AAAIAAQAAAAUAO7/AAAIAAQAAAAVAO3/AAAIAAQAAAAVAO7/AAAIAAQAAAAWAO3/AAAIAAQAAAAWAO7/AAAIAAQAAAAXAO3/AAAIAAQAAAAXAO7/AAAIAAQAAAAYAO3/AAAIAAQAAAAYAO7/AAAIAAQAAAAZAO3/AAAIAAQAAAAZAO7/AAAIAAQAAAADAO//AAAIAAQAAAADAPD/AAAIAAQAAAADAPH/AAAIAAQAAAADAPL/AAAIAAQAAAADAPP/AAAIAAQAAAADAPT/AAAIAAQAAAADAPX/AAAIAAQAAAADAPb/AAAIAAQAAAADAPf/AAAIAAQAAAADAPj/AAAIAAQAAAADAPn/AAAIAAQAAAADAPr/AAAIAAQAAAADAPv/AAAIAAQAAAADAPz/AAAIAAQAAAADAP3/AAAIAAQAAAADAP7/AAAIAAQAAAAEAO//AAAIAAQAAAAEAPD/AAAIAAQAAAAEAPH/AAAIAAQAAAAEAPL/AAAIAAQAAAAEAPP/AAAIAAQAAAAEAPT/AAAIAAQAAAAEAPX/AAAIAAQAAAAEAPb/AAAIAAQAAAAEAPf/AAAIAAQAAAAEAPj/AAAIAAQAAAAEAPn/AAAIAAQAAAAEAPr/AAAIAAQAAAAEAPv/AAAIAAQAAAAEAPz/AAAIAAQAAAAEAP3/AAAIAAQAAAAEAP7/AAAIAAQAAAA=")
+tile_set = SubResource("TileSet_a3ewc")
+y_sort_origin = 1
+
+[node name="GratulationLabel" type="Label" parent="Levels/Final Screen"]
+offset_left = 87.0
+offset_top = -270.0
+offset_right = 164.0
+offset_bottom = -196.0
+text = "Congratulations, you won Ritual Rush!!"
+label_settings = SubResource("LabelSettings_v2otx")
+horizontal_alignment = 1
+
+[node name="FinalSoulCount" type="Label" parent="Levels/Final Screen"]
+offset_left = 87.0
+offset_top = -234.0
+offset_right = 164.0
+offset_bottom = -160.0
+text = "0"
+label_settings = SubResource("LabelSettings_1n7ow")
+horizontal_alignment = 1
+
+[node name="SoulCount_Text" type="Label" parent="Levels/Final Screen"]
+offset_left = 162.0
+offset_top = -218.0
+offset_right = 515.0
+offset_bottom = -144.0
+text = "Lost Souls from a total of 
+30 Lost Souls rescued!"
+label_settings = SubResource("LabelSettings_v2otx")
+
+[node name="PlayAgainLabel" type="Label" parent="Levels/Final Screen"]
+offset_left = 244.0
+offset_top = -74.0
+offset_right = 597.0
+text = "Play Again? ->"
+label_settings = SubResource("LabelSettings_v2otx")
+
+[node name="Deatharea" parent="Levels/Final Screen" instance=ExtResource("4_i17cf")]
+position = Vector2(11, 63)
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Levels/Final Screen/Deatharea"]
+position = Vector2(377.5, -116.5)
+shape = SubResource("RectangleShape2D_k8ggk")
+
 [node name="Player" parent="." instance=ExtResource("1_gci2x")]
 position = Vector2(77, -36)
 
@@ -1311,6 +1547,22 @@ limit_bottom = 120
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="SoulPng" type="Sprite2D" parent="Player/Camera2D"]
+physics_interpolation_mode = 2
+position = Vector2(8, -143)
+texture = ExtResource("10_tjdts")
+
+[node name="SoulsCounter" type="Label" parent="Player/Camera2D"]
+offset_left = -29.0
+offset_top = -134.0
+offset_right = 11.0
+offset_bottom = -102.0
+scale = Vector2(1.84013, 2.02795)
+text = "0"
+label_settings = SubResource("LabelSettings_jmdio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Deatharea" parent="." instance=ExtResource("4_i17cf")]
 position = Vector2(11, 63)
 collision_mask = 16
@@ -1318,6 +1570,37 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deatharea"]
 position = Vector2(52, 145)
 shape = SubResource("WorldBoundaryShape2D_j6g0i")
+
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
+[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
 
 [editable path="Levels/Level1/Teleporter"]
 [editable path="Levels/Level2/Enemies/Goblin_1"]
@@ -1332,3 +1615,4 @@ shape = SubResource("WorldBoundaryShape2D_j6g0i")
 [editable path="Levels/Level2/Enemies/Goblin_10"]
 [editable path="Levels/Level2/Enemies/Goblin_11"]
 [editable path="Levels/Level2/Teleporter"]
+[editable path="Levels/Level3/Teleporter"]
