@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	position.x += MOVESPEED * delta * direction
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !isPlayingAnimation:
 		if direction == 0:
 			animated_sprite_player.play("Idle")
