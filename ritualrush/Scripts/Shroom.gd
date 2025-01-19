@@ -11,6 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+# The Idea for this was that when the Shroom Head is hit that a Spore Cloud is spawned
+# !Cut from Scope!
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	pass

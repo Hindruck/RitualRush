@@ -1,6 +1,9 @@
 extends Node2D
 
+# Count of all of the Souls that are collected
 var soulsCount := 0
+
+# References to the player and the two Soul Labels
 @onready var player: Player = $Player
 @onready var souls_counter: Label = $Player/Camera2D/SoulsCounter
 @onready var final_soul_count: Label = $"Levels/Final Screen/FinalSoulCount"
@@ -15,8 +18,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-
+# Gets signaled by every Souls when it is collected
 func _on_souls_soul_collected() -> void:
+	# Adds to the Count
 	soulsCount += 1
+	# Displays in moving counter and final room text get updated
 	souls_counter.text = str(soulsCount)
 	final_soul_count.text = str(soulsCount)
