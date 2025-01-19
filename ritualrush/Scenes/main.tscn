@@ -1144,7 +1144,7 @@ scale = Vector2(1, 1)
 position = Vector2(1524, -111)
 scale = Vector2(1, 1)
 
-[node name="Label" type="Label" parent="Levels/Level1"]
+[node name="Tutorial1" type="Label" parent="Levels/Level1"]
 offset_left = 2.0
 offset_top = -296.0
 offset_right = 286.0
@@ -1155,6 +1155,15 @@ Press \"L\" for Short Range Magicburst
 \"Space\" - Jump
 \"A/D\" \"Left/Right\" - Move"
 label_settings = SubResource("LabelSettings_wdr52")
+
+[node name="Tutorial2" type="Label" parent="Levels/Level1"]
+offset_left = 312.0
+offset_top = -207.0
+offset_right = 596.0
+offset_bottom = -80.0
+text = "Collect Lost Souls to save them from the evil Necromancer and his minions! ->"
+label_settings = SubResource("LabelSettings_wdr52")
+autowrap_mode = 2
 
 [node name="Level2" type="Node2D" parent="Levels"]
 position = Vector2(5534, -68)

@@ -7,6 +7,7 @@ const MAX_HP: float = 250.0
 
 var HP: float = 250.0
 var isPlayingAnimation: bool = false
+var isCasting: bool = false
 var direction 
 
 @onready var fireball: Spell = $Fireball
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -70,16 +72,18 @@ func _process(delta: float) -> void:
 	healthbar.value = HP
 	if HP < MAX_HP:
 		heal(1 * (1 + delta/2 ))
-		
-	if Input.is_action_just_pressed("attack_1"):
-		animated_sprite_player.stop()
-		isPlayingAnimation = true
-		animated_sprite_player.play("Attack_1")
-		castFireBall()
-	elif Input.is_action_just_pressed("attack_2"):
-		isPlayingAnimation = true
-		animated_sprite_player.play("Attack_2")
-		castMelee()
+	
+	if fireball.isCasting == false || !isCasting:	
+		if Input.is_action_just_pressed("attack_1"):
+			animated_sprite_player.stop()
+			isPlayingAnimation = true
+			animated_sprite_player.play("Attack_1")
+			castFireBall()
+		elif Input.is_action_just_pressed("attack_2"):
+			isPlayingAnimation = true
+			isCasting = true
+			animated_sprite_player.play("Attack_2")
+			castMelee()
 				
 func castFireBall():
 	fireball.spawn(direction)
@@ -91,6 +95,7 @@ func castMelee():
 	for area in overlapping_Enemies:
 		var parent = area.get_parent()
 		parent.takeDamage(attack_area.damage)	
+	isCasting = false
 		
 func takeDamage(damage: int) -> void:
 	HP -= damage

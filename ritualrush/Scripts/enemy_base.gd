@@ -8,6 +8,7 @@ var isDead := false
 @export var MOVESPEED = 100
 @export var HP: float = 100
 
+@onready var damage_collision: CollisionShape2D = $DamageArea/DamageCollision
 @onready var ray_cast_left: RayCast2D = $AnimatedSprite2D/RayCastLeft
 @onready var ray_cast_right: RayCast2D = $AnimatedSprite2D/RayCastRight
 @onready var animated_sprite_player: AnimatedSprite2D = $AnimatedSprite2D
@@ -42,6 +43,7 @@ func takeDamage(damage: int) -> void:
 		
 func death():
 	isDead = true
+	damage_collision.disabled = true
 	isPlayingAnimation = true
 	animated_sprite_player.play("Death")
 		
