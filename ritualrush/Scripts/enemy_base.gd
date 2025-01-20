@@ -12,10 +12,9 @@ var isDead := false
 @export var HP: float = 100
 
 # Scene references needed to control the enemy
-@onready var damage_collision: CollisionShape2D = $DamageArea/DamageCollision
 @onready var ray_cast_left: RayCast2D = $AnimatedSprite2D/RayCastLeft
 @onready var ray_cast_right: RayCast2D = $AnimatedSprite2D/RayCastRight
-@onready var animated_sprite_player: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_enemy: AnimatedSprite2D = $AnimatedSprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,21 +22,21 @@ func _process(delta: float) -> void:
 	# Basically making them ping-pong between walls
 	if ray_cast_left.is_colliding():
 		direction = 1
-		animated_sprite_player.flip_h = false
+		animated_sprite_enemy.flip_h = false
 	elif ray_cast_right.is_colliding():
 		direction = -1
-		animated_sprite_player.flip_h = true
+		animated_sprite_enemy.flip_h = true
 	
-	
+	# Moving the Enemy
 	position.x += MOVESPEED * delta * direction
 
 # Setting the animations regarding the npcs current walking state
 func _physics_process(_delta: float) -> void:
 	if !isPlayingAnimation:
 		if direction == 0:
-			animated_sprite_player.play("Idle")
+			animated_sprite_enemy.play("Idle")
 		else:
-			animated_sprite_player.play("Run")	
+			animated_sprite_enemy.play("Run")	
 		
 	
 # Function that automatically reduced the HP of the Enemy
@@ -45,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 func takeDamage(damage: int) -> void:
 	HP -= damage
 	isPlayingAnimation = true
-	animated_sprite_player.play("Hit")
+	animated_sprite_enemy.play("Hit")
 	if HP < 0:
 		death()
 
@@ -53,9 +52,8 @@ func takeDamage(damage: int) -> void:
 # Works like the player script, with the difference, that the collision is disabled when dead to not deal damage when dead		
 func death():
 	isDead = true
-	damage_collision.disabled = true
 	isPlayingAnimation = true
-	animated_sprite_player.play("Death")
+	animated_sprite_enemy.play("Death")
 		
 
 

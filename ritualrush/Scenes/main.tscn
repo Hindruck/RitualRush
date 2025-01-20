@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d0nvdgr3v3i0w"]
+[gd_scene load_steps=28 format=4 uid="uid://d0nvdgr3v3i0w"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6advc"]
 [ext_resource type="PackedScene" uid="uid://dbtngpjjtq15q" path="res://Scenes/player.tscn" id="1_gci2x"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bjqhlvrvb5txj" path="res://Scenes/enemy_Goblin.tscn" id="8_klry3"]
 [ext_resource type="PackedScene" uid="uid://dliup2yi3v5in" path="res://Scenes/souls.tscn" id="8_rwr6k"]
 [ext_resource type="Texture2D" uid="uid://u1y6fawppbxx" path="res://Assets/VFX/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)7.png" id="10_tjdts"]
+[ext_resource type="PackedScene" uid="uid://dldwnjfp355ge" path="res://Scenes/necromancer.tscn" id="10_tojhh"]
+[ext_resource type="PackedScene" uid="uid://bgr5dmgwjxle8" path="res://Scenes/spell_necromancy_1.tscn" id="11_6tqtj"]
+[ext_resource type="PackedScene" uid="uid://dbm062j62u6u5" path="res://Scenes/spell_necromancy_2.tscn" id="12_36qgl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ctrn3"]
 texture = ExtResource("3_5ptpo")
@@ -1449,6 +1452,67 @@ position = Vector2(1468, -248)
 [node name="Eye_4" parent="Levels/Level3/Enemies" instance=ExtResource("6_uaecx")]
 position = Vector2(1830, -295)
 
+[node name="Necromancer" parent="Levels/Level3/Enemies" instance=ExtResource("10_tojhh")]
+position = Vector2(2296, -293)
+scale = Vector2(1.6, 1.6)
+
+[node name="Spell_Necromancy_1" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(7751, -1276)
+
+[node name="Spell_Necromancy_9" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8245, -1315)
+
+[node name="Spell_Necromancy_10" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8067, -1211)
+
+[node name="Spell_Necromancy_11" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8413, -1307)
+
+[node name="Spell_Necromancy_12" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8801, -1280)
+
+[node name="Spell_Necromancy_13" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8653, -1289)
+
+[node name="Spell_Necromancy_14" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8906, -1369)
+
+[node name="Spell_Necromancy_15" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(9026, -1367)
+
+[node name="Spell_Necromancy_16" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8006, -1301)
+
+[node name="Spell_Necromancy_17" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(7860, -1244)
+
+[node name="Spell_Necromancy_18" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8540, -1405)
+
+[node name="Spell_Necromancy_19" parent="Levels/Level3/Enemies" instance=ExtResource("11_6tqtj")]
+position = Vector2(8352, -1382)
+
+[node name="Spell_Necromancy_2" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9264, -1288)
+
+[node name="Spell_Necromancy_3" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9226, -1288)
+
+[node name="Spell_Necromancy_4" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9187, -1288)
+
+[node name="Spell_Necromancy_5" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9149, -1288)
+
+[node name="Spell_Necromancy_6" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9111, -1288)
+
+[node name="Spell_Necromancy_7" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9072, -1288)
+
+[node name="Spell_Necromancy_8" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(9032, -1305)
+
 [node name="Collectables" type="Node2D" parent="Levels/Level3"]
 
 [node name="Souls" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
@@ -1563,7 +1627,7 @@ position = Vector2(377.5, -116.5)
 shape = SubResource("RectangleShape2D_k8ggk")
 
 [node name="Player" parent="." instance=ExtResource("1_gci2x")]
-position = Vector2(77, -36)
+position = Vector2(7570, -1211)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 0)
@@ -1617,6 +1681,8 @@ shape = SubResource("WorldBoundaryShape2D_j6g0i")
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
+[connection signal="cast_spell_1" from="Levels/Level3/Enemies/Necromancer" to="Levels/Level3/Enemies/Spell_Necromancy_1" method="_on_necromancer_cast_spell_1"]
+[connection signal="cast_spell_2" from="Levels/Level3/Enemies/Necromancer" to="Levels/Level3/Enemies/Spell_Necromancy_2" method="_on_necromancer_cast_spell_2"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls3" to="." method="_on_souls_soul_collected"]

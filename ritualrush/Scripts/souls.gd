@@ -9,7 +9,7 @@ var isTriggered = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # When player enters the signal gets emitted and play the pick up animation and makes sure it only triggers once
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if !isTriggered:
 		soul_Collected.emit()
 		animated_sprite.play("PickedUp")

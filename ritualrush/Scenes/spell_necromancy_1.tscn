@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://bgr5dmgwjxle8"]
+
+[ext_resource type="Texture2D" uid="uid://dmeu5hgw7j8mp" path="res://Assets/VFX/Part 8/388.png" id="1_3xb8a"]
+[ext_resource type="Script" path="res://Scripts/spell_necromancy_1.gd" id="1_ij8st"]
+[ext_resource type="Script" path="res://Scripts/AttackArea.gd" id="3_1ii72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yj7c"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg61c"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygvp4"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivqge"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofjhp"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ys3"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(320, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niy28"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(384, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nee0q"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(448, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02fxp"]
+atlas = ExtResource("1_3xb8a")
+region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7gx8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yj7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg61c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygvp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivqge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofjhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ys3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niy28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nee0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02fxp")
+}],
+"loop": false,
+"name": &"Spell",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5x1s"]
+radius = 14.0
+
+[node name="Spell_Necromancy_1" type="Node2D"]
+top_level = true
+script = ExtResource("1_ij8st")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+top_level = true
+z_index = 2
+position = Vector2(-4, 0)
+sprite_frames = SubResource("SpriteFrames_7gx8b")
+animation = &"Spell"
+autoplay = "Spell"
+frame = 8
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("3_1ii72")
+damage = 120
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_p5x1s")
+
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

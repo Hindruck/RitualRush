@@ -605,7 +605,7 @@ script = ExtResource("1_eebro")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -22)
 sprite_frames = SubResource("SpriteFrames_bovav")
-animation = &"Idle"
+animation = &"Attack_1"
 autoplay = "Idle"
 flip_h = true
 
@@ -636,14 +636,4 @@ collision_mask = 0
 position = Vector2(3, 4)
 shape = SubResource("CapsuleShape2D_x0ehd")
 
-[node name="Spell1Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
-[node name="Spell2Timer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_necromancer_animation_finished"]
 [connection signal="area_entered" from="HurtArea" to="HurtArea" method="_on_area_entered"]
-[connection signal="timeout" from="Spell1Timer" to="." method="_on_spell_1_timer_timeout"]
-[connection signal="timeout" from="Spell2Timer" to="." method="_on_spell_2_timer_timeout"]
