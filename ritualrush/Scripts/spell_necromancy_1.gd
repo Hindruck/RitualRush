@@ -1,7 +1,7 @@
 extends Spell
 class_name Spell_1
 
-
+# Saving References to assets
 @onready var attack_area_spell1: AttackArea = $AttackArea
 @onready var animated_sprite_spell1: AnimatedSprite2D = $AnimatedSprite2D
 @onready var spell_necromancy_1: Spell_1 = $"."
@@ -18,6 +18,7 @@ func spawn(_direction: float):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Connecting to the Signal cast_spell_1 from the Signalbus
 	SignalbusGlobal.cast_spell_1.connect(_on_necromancer_cast_spell_1)
 
 
@@ -38,5 +39,6 @@ func _on_hit_timer_timeout() -> void:
 			player.takeDamage(attack_area_spell1.damage)
 		
 
+# This function gets called when the signal is emitted
 func _on_necromancer_cast_spell_1() -> void:
 	spawn(0)

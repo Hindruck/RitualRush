@@ -57,7 +57,8 @@ func death():
 			
 
 
-
+# When a non-looping animation finishes playing this function is called
+# If the Enemy is dead then it gets deleted from the level otherwise it allows walking animations to trigger
 func _on_animated_sprite_animation_finished() -> void:
 	if isDead:
 		queue_free()

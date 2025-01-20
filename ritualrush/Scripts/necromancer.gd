@@ -1,10 +1,10 @@
+# Extends Enemy, this makes the Necromancer Script a Sub-Class from Enemy
 extends Enemy
 
+# Creating a few booleans that are needed across the entire class
 var isNecromancerDead := false
-var isPlayerInRange := false
 var isOnCooldown := false
-var spell1Cast := false
-
+# Saving references from the assets to be used in the code
 @onready var ray_cast_short: RayCast2D = $AnimatedSprite2D/RayCastShort
 @onready var ray_cast_long: RayCast2D = $AnimatedSprite2D/RayCastLong
 @onready var animated_sprite_necromancer: AnimatedSprite2D = $AnimatedSprite2D
@@ -19,28 +19,35 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:	
-	pass
-
-func _physics_process(_delta: float) -> void:
-	if !isOnCooldown:
-		super(_delta)
 	if !isDead:		
+		# Sets the shorter casting time the closer the player is to the boss
 		if ray_cast_short.is_colliding():
 			spell_1_timer.wait_time = 2
 		elif ray_cast_long.is_colliding():
-			spell_1_timer.wait_time = 3
+			spell_1_timer.wait_time = 3			
+		
+			
+		# Turns on the secondary Spell casting, when the player gets close and resets back to default, when player out of range
+		if ray_cast_short.is_colliding() || ray_cast_long.is_colliding():	
 			spell_2_timer.autostart = true
-			spell_2_timer.start()
-			isPlayerInRange = true
+			spell_2_timer.start()	
 		elif !ray_cast_long.is_colliding() && !ray_cast_short.is_colliding():	
 			spell_1_timer.wait_time = 5
-			spell_2_timer.autostart = false
+			spell_2_timer.autostart = false	
+
+# Physics process that runs the parent code when isOnCooldown is false
+func _physics_process(_delta: float) -> void:
+	if !isOnCooldown:
+		super(_delta)
+	
 
 		
-	
+# Function that calculates the damage taken by the Enemy.
+# Using parent function with super()	
 func takeDamage(damage: int) -> void:
 	super(damage)	
-	
+
+# Function that handles the Necromancers Death	
 func death():
 	Engine.time_scale = 0.5
 	isNecromancerDead = true
@@ -48,28 +55,28 @@ func death():
 	spell_1_timer.stop()
 	spell_2_timer.stop()
 	animated_sprite_necromancer.play("Death")
-	
-func _on_animated_sprite_animation_finished() -> void:
+
+
+# When the Spell1Timer completes a cycle this function gets called and emits a signal that activated all instances of the spell
+func _on_spell_1_timer_timeout() -> void:	
+	isOnCooldown = true
+	isPlayingAnimation = true
+	animated_sprite_necromancer.play("Attack_1")
+	SignalbusGlobal.cast_spell_1.emit()
+
+# When the Spell2Timer completes a cycle this function gets called and emits a signal that activated all instances of the spell
+func _on_spell_2_timer_timeout() -> void:
+	isOnCooldown = true
+	isPlayingAnimation = true
+	animated_sprite_necromancer.play("Attack_2")
+	SignalbusGlobal.cast_spell_2.emit()
+
+# When an non-looping animation finishes this function is called
+# When the Necromancer is dead at this point the engine gets set back to normal speed and the necromancer gets destroyed	
+func _on_animated_sprite_necromancer_animation_finished() -> void:
 	if isNecromancerDead :
 		Engine.time_scale = 1
 		queue_free()
 	else:
 		isPlayingAnimation = false
-
-
-func _on_spell_1_timer_timeout() -> void:
-	#if !isOnCooldown:
-		isOnCooldown = true
-		animated_sprite_necromancer.play("Attack_1")
-		SignalbusGlobal.cast_spell_1.emit()
-
-
-func _on_spell_2_timer_timeout() -> void:
-	#if !isOnCooldown:
-		isOnCooldown = true
-		animated_sprite_necromancer.play("Attack_2")
-		SignalbusGlobal.cast_spell_2.emit()
-
-
-func _on_animated_sprite_necromancer_animation_finished() -> void:
-	isOnCooldown = false
+		isOnCooldown = false

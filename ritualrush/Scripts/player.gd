@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	# Move the character
 	move_and_slide()
 
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Base Health Regeneration, when not at full HP
 	healthbar.value = HP

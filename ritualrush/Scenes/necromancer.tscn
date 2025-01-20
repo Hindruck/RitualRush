@@ -610,13 +610,13 @@ autoplay = "Idle"
 flip_h = true
 
 [node name="RayCastShort" type="RayCast2D" parent="AnimatedSprite2D"]
-position = Vector2(129, 22)
+position = Vector2(83, 22)
 target_position = Vector2(-250, 0)
 collision_mask = 16
 collide_with_areas = true
 
 [node name="RayCastLong" type="RayCast2D" parent="AnimatedSprite2D"]
-position = Vector2(-4, 22)
+position = Vector2(-31, 22)
 target_position = Vector2(-250, 0)
 collision_mask = 16
 collide_with_areas = true
