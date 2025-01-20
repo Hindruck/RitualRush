@@ -1,8 +1,6 @@
 extends Enemy
 
-signal cast_spell_1
-signal cast_spell_2
-
+var isNecromancerDead := false
 var isPlayerInRange := false
 var isOnCooldown := false
 var spell1Cast := false
@@ -20,7 +18,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:	
+func _process(_delta: float) -> void:	
 	pass
 
 func _physics_process(_delta: float) -> void:
@@ -32,6 +30,7 @@ func _physics_process(_delta: float) -> void:
 		elif ray_cast_long.is_colliding():
 			spell_1_timer.wait_time = 3
 			spell_2_timer.autostart = true
+			spell_2_timer.start()
 			isPlayerInRange = true
 		elif !ray_cast_long.is_colliding() && !ray_cast_short.is_colliding():	
 			spell_1_timer.wait_time = 5
@@ -44,26 +43,32 @@ func takeDamage(damage: int) -> void:
 	
 func death():
 	Engine.time_scale = 0.5
-	super()
+	isNecromancerDead = true
+	isPlayingAnimation = true
+	spell_1_timer.stop()
+	spell_2_timer.stop()
+	animated_sprite_necromancer.play("Death")
 	
 func _on_animated_sprite_animation_finished() -> void:
-	if isDead:
+	if isNecromancerDead :
 		Engine.time_scale = 1
-	super()
+		queue_free()
+	else:
+		isPlayingAnimation = false
 
 
 func _on_spell_1_timer_timeout() -> void:
-	if !isOnCooldown:
+	#if !isOnCooldown:
 		isOnCooldown = true
 		animated_sprite_necromancer.play("Attack_1")
-		cast_spell_1.emit()
+		SignalbusGlobal.cast_spell_1.emit()
 
 
 func _on_spell_2_timer_timeout() -> void:
-	if !isOnCooldown:
+	#if !isOnCooldown:
 		isOnCooldown = true
 		animated_sprite_necromancer.play("Attack_2")
-		cast_spell_2.emit()
+		SignalbusGlobal.cast_spell_2.emit()
 
 
 func _on_animated_sprite_necromancer_animation_finished() -> void:

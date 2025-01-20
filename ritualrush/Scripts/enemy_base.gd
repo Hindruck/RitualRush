@@ -54,7 +54,7 @@ func death():
 	isDead = true
 	isPlayingAnimation = true
 	animated_sprite_enemy.play("Death")
-		
+			
 
 
 

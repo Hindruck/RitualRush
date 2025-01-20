@@ -1513,6 +1513,12 @@ position = Vector2(9072, -1288)
 [node name="Spell_Necromancy_8" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
 position = Vector2(9032, -1305)
 
+[node name="Spell_Necromancy_20" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(8955, -1284)
+
+[node name="Spell_Necromancy_21" parent="Levels/Level3/Enemies" instance=ExtResource("12_36qgl")]
+position = Vector2(8843, -1283)
+
 [node name="Collectables" type="Node2D" parent="Levels/Level3"]
 
 [node name="Souls" parent="Levels/Level3/Collectables" instance=ExtResource("8_rwr6k")]
@@ -1627,7 +1633,7 @@ position = Vector2(377.5, -116.5)
 shape = SubResource("RectangleShape2D_k8ggk")
 
 [node name="Player" parent="." instance=ExtResource("1_gci2x")]
-position = Vector2(7570, -1211)
+position = Vector2(51, -37)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 0)
@@ -1681,8 +1687,6 @@ shape = SubResource("WorldBoundaryShape2D_j6g0i")
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
-[connection signal="cast_spell_1" from="Levels/Level3/Enemies/Necromancer" to="Levels/Level3/Enemies/Spell_Necromancy_1" method="_on_necromancer_cast_spell_1"]
-[connection signal="cast_spell_2" from="Levels/Level3/Enemies/Necromancer" to="Levels/Level3/Enemies/Spell_Necromancy_2" method="_on_necromancer_cast_spell_2"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
 [connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
