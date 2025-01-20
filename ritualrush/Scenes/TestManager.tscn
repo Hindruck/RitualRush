@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds60dfklndh23"]
+
+[ext_resource type="PackedScene" uid="uid://m28heqtswbuq" path="res://addons/gut/GutScene.tscn" id="1_4mf6d"]
+
+[node name="Testmanager" instance=ExtResource("1_4mf6d")]
+
+[node name="Normal" parent="." index="0"]
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 650.0
+
+[node name="Compact" parent="." index="1"]
+offset_left = 546.0
+offset_top = 361.0
+offset_right = 826.0
+offset_bottom = 506.0

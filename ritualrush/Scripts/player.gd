@@ -112,10 +112,11 @@ func castMagicBurst():
 func takeDamage(damage: int) -> void:
 	HP -= damage
 	isPlayingAnimation = true
-	animated_sprite_player.play("Hit")
 	# If the Player HP reaches below 0 the "death" function gets called
 	if HP < 0:
 		death()
+	
+	animated_sprite_player.play("Hit")
 
 # Function to heal the player. Implemented in this way with the option of heal collectables in the future in mind.		
 func heal(healthPoints: float) -> void:
