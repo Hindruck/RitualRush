@@ -14,22 +14,22 @@ func after_each():
 
 # Testing that the heal function in the player is working
 func test_heal():
-	_player.HP = 200.0
+	_player.Hp = 200.0
 	var result = _player.heal(30.)
 	
-	assert_eq(_player.HP, 230., "HP should be 230")
+	assert_eq(_player.Hp, 230., "HP should be 230")
 	
 # Testing that the player does not overheal
 func test_heal_not_overheal():
-	_player.HP = 200.0
+	_player.Hp = 200.0
 	var result = _player.heal(60.)
 	
-	assert_eq(_player.HP, 250., "HP should be 250 and not more")	
+	assert_eq(_player.Hp, 250., "HP should be 250 and not more")	
 
 # Throws error because of animation being played (?) in code, but that does not influence the outcome of this.	
 # Tests that the player does not die when the player takes insufficient damage to die
 func test_takeDamage():
-	_player.HP = 200.0
+	_player.Hp = 200.0
 	var result = double(Character).new()
 	result.takeDamage(180)
 	assert_not_called(result, 'death')

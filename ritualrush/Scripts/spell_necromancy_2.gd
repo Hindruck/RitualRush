@@ -19,7 +19,7 @@ func spawn(_direction: float):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connecting to the Signal cast_spell_2 from the Signalbus	
-	SignalbusGlobal.cast_spell_2.connect(_on_necromancer_cast_spell_2)
+	SignalbusGlobal.cast_Spell_2.connect(_on_necromancer_cast_spell_2)
 
 
 # Function to "Turn off" the Spell when it has reached the end of its lifetime

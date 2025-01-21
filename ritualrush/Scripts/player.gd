@@ -5,7 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const MAX_HP: float = 250.0
 
-var HP: float = 250.0
+var Hp: float = 250.0
 var isPlayingAnimation: bool = false
 var isCasting: bool = false
 var direction 
@@ -70,8 +70,8 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Base Health Regeneration, when not at full HP
-	healthbar.value = HP
-	if HP < MAX_HP:
+	healthbar.value = Hp
+	if Hp < MAX_HP:
 		heal(1 * (1 + delta/2 ))
 	
 	# Only allowing casting, when the player is not already casting a spell to attack
@@ -110,20 +110,20 @@ func castMagicBurst():
 # Function to reduce the HP of the player. 
 # Reducing the HP value and playing the "Hit" Animation		
 func takeDamage(damage: int) -> void:
-	HP -= damage
+	Hp -= damage
 	isPlayingAnimation = true
 	# If the Player HP reaches below 0 the "death" function gets called
-	if HP < 0:
+	if Hp < 0:
 		death()
 	
 	animated_sprite_player.play("Hit")
 
 # Function to heal the player. Implemented in this way with the option of heal collectables in the future in mind.		
 func heal(healthPoints: float) -> void:
-	HP += healthPoints
+	Hp += healthPoints
 	# Only healing to max hp and not overhealing
-	if HP > MAX_HP:
-		HP = MAX_HP
+	if Hp > MAX_HP:
+		Hp = MAX_HP
 		
 # Function that handles the player death. Entering Slomo and playing death animation	
 func death():

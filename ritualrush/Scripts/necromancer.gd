@@ -62,14 +62,14 @@ func _on_spell_1_timer_timeout() -> void:
 	isOnCooldown = true
 	isPlayingAnimation = true
 	animated_sprite_necromancer.play("Attack_1")
-	SignalbusGlobal.cast_spell_1.emit()
+	SignalbusGlobal.cast_Spell_1.emit()
 
 # When the Spell2Timer completes a cycle this function gets called and emits a signal that activated all instances of the spell
 func _on_spell_2_timer_timeout() -> void:
 	isOnCooldown = true
 	isPlayingAnimation = true
 	animated_sprite_necromancer.play("Attack_2")
-	SignalbusGlobal.cast_spell_2.emit()
+	SignalbusGlobal.cast_Spell_2.emit()
 
 # When an non-looping animation finishes this function is called
 # When the Necromancer is dead at this point the engine gets set back to normal speed and the necromancer gets destroyed	
