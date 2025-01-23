@@ -7,14 +7,14 @@ class_name Spell_2
 @onready var spell_necromancy_2: Spell_2 = $"."
 
 func spawn(_direction: float):
-		# Starts playing the animation when spawned and only is made visible when actively cast.
-		isCasting = true
-		spell_necromancy_2.visible = true
-		animated_sprite_spell2.play("Spell")
-		# Two timer start, general timer for the lifetime of the spell
-		# Hit_Timer is shorter to match the animation with the damage
-		timer.start()	
-		hit_timer.start()
+	# Starts playing the animation when spawned and only is made visible when actively cast.
+	isCasting = true
+	spell_necromancy_2.visible = true
+	animated_sprite_spell2.play("Spell")
+	# Two timer start, general timer for the lifetime of the spell
+	# Hit_Timer is shorter to match the animation with the damage
+	timer.start()	
+	hit_timer.start()
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

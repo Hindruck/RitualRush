@@ -4,3 +4,4 @@ extends Node
 # Gets emitted in Necromancer to distribute
 signal cast_Spell_1
 signal cast_Spell_2
+signal soul_Collected

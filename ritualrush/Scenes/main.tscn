@@ -1029,8 +1029,8 @@ tile_set = SubResource("TileSet_wt48m")
 
 [node name="Level1" type="Node2D" parent="Levels"]
 script = ExtResource("1_w6n4n")
-levelNr = 1
-levelVisible = true
+LEVELNR = 1
+LEVELVISIBLE = true
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="Levels/Level1"]
 position = Vector2(3, 1)
@@ -1171,8 +1171,8 @@ autowrap_mode = 2
 [node name="Level2" type="Node2D" parent="Levels"]
 position = Vector2(5534, -68)
 script = ExtResource("1_w6n4n")
-levelNr = 2
-levelVisible = true
+LEVELNR = 2
+LEVELVISIBLE = true
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="Levels/Level2"]
 position = Vector2(-74, 68)
@@ -1355,8 +1355,8 @@ scale = Vector2(1, 1)
 [node name="Level3" type="Node2D" parent="Levels"]
 position = Vector2(6920, -1178)
 script = ExtResource("1_w6n4n")
-levelNr = 2
-levelVisible = true
+LEVELNR = 3
+LEVELVISIBLE = true
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="Levels/Level3"]
 position = Vector2(-74, 68)
@@ -1633,7 +1633,7 @@ position = Vector2(377.5, -116.5)
 shape = SubResource("RectangleShape2D_k8ggk")
 
 [node name="Player" parent="." instance=ExtResource("1_gci2x")]
-position = Vector2(51, -37)
+position = Vector2(72, -45)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, 0)
@@ -1666,37 +1666,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deatharea"]
 position = Vector2(52, 145)
 shape = SubResource("WorldBoundaryShape2D_j6g0i")
-
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level1/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level2/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls2" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls3" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls4" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls5" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls6" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls7" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls8" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls9" to="." method="_on_souls_soul_collected"]
-[connection signal="soul_Collected" from="Levels/Level3/Collectables/Souls10" to="." method="_on_souls_soul_collected"]
 
 [editable path="Levels/Level1/Teleporter"]
 [editable path="Levels/Level2/Enemies/Goblin_1"]
